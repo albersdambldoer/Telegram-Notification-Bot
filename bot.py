@@ -41,26 +41,21 @@ async def run_betting_cycle():
     await send_message(MSG_ANALYZING)
     await asyncio.sleep(random.randint(30, 60))
     
-    # Step 2: Send entry signal with random color
     selected_color = random.choice(COLORS)
     entry_msg = MSG_ENTRY.format(color=selected_color)
     await send_message(entry_msg)
     await asyncio.sleep(5)
     
-    # Step 3: Send casino link
     await send_message(MSG_CASINO)
-    await asyncio.sleep(random.randint(20, 40))  # Wait for "game result" 20-40 seconds
+    await asyncio.sleep(random.randint(20, 40))
     
-    # Step 4: Check result and handle Gales (max 2)
     max_gales = 2
     gale_count = 0
     won = False
     
-    # First attempt
     if await simulate_game_result():
         won = True
     else:
-        # Try Gales
         for gale in range(1, max_gales + 1):
             gale_count = gale
             if gale == 1:
@@ -68,20 +63,18 @@ async def run_betting_cycle():
             elif gale == 2:
                 await send_message(MSG_GALE_2)
             
-            await asyncio.sleep(random.randint(20, 40))  # Wait for game result
+            await asyncio.sleep(random.randint(20, 40))
             
             if await simulate_game_result():
                 won = True
                 break
     
-    # Step 5: Send final result
     await asyncio.sleep(3)
     if won:
         await send_message(MSG_VICTORY)
     else:
         await send_message(MSG_LOSS)
     
-    # Log the cycle
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     result = "WIN" if won else "LOSS"
     log_msg = f"[{timestamp}] Cycle complete: {result} (Color: {selected_color}, Gales: {gale_count})\n"
