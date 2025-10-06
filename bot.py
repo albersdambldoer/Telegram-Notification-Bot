@@ -6,7 +6,6 @@ from config import BOT_TOKEN, CHAT_ID
 
 bot = Bot(token=BOT_TOKEN)
 
-# Casino link
 CASINO_LINK = "https://track.intrklnkmain.com/visit/?bta=52152&brand=bdmbet"
 
 # Messages in Portuguese as requested by client
