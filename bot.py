@@ -100,14 +100,13 @@ async def run_bot_forever():
             
             await run_betting_cycle()
             
-            # Wait before next cycle (5-10 minutes)
-            wait_time = random.randint(300, 600)  # 5-10 minutes
+            wait_time = random.randint(300, 600)
             print(f"\n⏳ Waiting {wait_time//60} minutes before next signal...")
             await asyncio.sleep(wait_time)
             
         except Exception as e:
             print(f"❌ Error in cycle: {e}")
-            await asyncio.sleep(60)  # Wait 1 minute before retrying
+            await asyncio.sleep(60)
 
 if __name__ == "__main__":
     asyncio.run(run_bot_forever())
