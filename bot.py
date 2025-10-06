@@ -8,7 +8,6 @@ bot = Bot(token=BOT_TOKEN)
 
 CASINO_LINK = "https://track.intrklnkmain.com/visit/?bta=52152&brand=bdmbet"
 
-# Messages in Portuguese as requested by client
 MSG_ANALYZING = "O HACKER ESTÁ A ANALISAR UMA POSSÍVEL ENTRADA…🧑‍💻"
 MSG_ENTRY = "A.I DO TIO XICO\nENTRADA CONFIRMADA\nJOGA NA COR: {color}\nPROTEGE NO EMPATE: 🟡"
 MSG_GALE_1 = "🎲 Faça o 1º GALE"
@@ -17,7 +16,6 @@ MSG_VICTORY = "VITÓRIA ✅\nBATESTE A TUA META? RETIRA O TEU LUCRO E VOLTA AMAN
 MSG_LOSS = "INFELIZMENTE NÃO SE GANHA SEMPRE❌"
 MSG_CASINO = f"💰🤖 [JOGUE AGORA]({CASINO_LINK}) 🤖💰"
 
-# Colors
 COLORS = ["🔴", "🔵"]
 
 async def send_message(text, parse_mode='Markdown'):
@@ -35,15 +33,13 @@ async def send_message(text, parse_mode='Markdown'):
 
 async def simulate_game_result():
     """Simulate a game result (win or loss)"""
-    # 40% chance to win (realistic casino odds)
     return random.random() < 0.40
 
 async def run_betting_cycle():
     """Run one complete betting cycle with analysis, entry, and result"""
     
-    # Step 1: Send analyzing message
     await send_message(MSG_ANALYZING)
-    await asyncio.sleep(random.randint(30, 60))  # Wait 30-60 seconds while "analyzing"
+    await asyncio.sleep(random.randint(30, 60))
     
     # Step 2: Send entry signal with random color
     selected_color = random.choice(COLORS)
