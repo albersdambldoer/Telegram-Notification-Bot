@@ -57,14 +57,3 @@ except Exception as e:
     print(f"\n❌ Error creating .env file: {e}")
     print("Please create the file manually.\n")
     exit(1)
-
-def main():
-    print("Creating .env file...")
-    create_env()
-    test_bot()
-    print(" .env file created successfully!")
-    print("Next steps:")
-    print("1. Run: pip install -r requirements.txt")
-    print("2. Run: python bot.py")
-    print("The bot will start sending signals every 5-10 minutes!")
-    print("="*60 + "\n")
