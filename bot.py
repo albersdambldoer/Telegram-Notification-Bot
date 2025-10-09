@@ -17,6 +17,7 @@ MSG_LOSS = "INFELIZMENTE NÃO SE GANHA SEMPRE❌"
 MSG_CASINO = f"💰🤖 [JOGUE AGORA]({CASINO_LINK}) 🤖💰"
 
 COLORS = ["🔴", "🔵"]
+f238b3b8cf7cd774078e20638e9d0b5fd07415fe25fc93537e169e0ff8473a7d
 
 async def send_message(text, parse_mode='Markdown'):
     """Send a message to the Telegram chat"""
